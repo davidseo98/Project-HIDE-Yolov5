@@ -44,7 +44,7 @@ def make_data(video_path, img_path):
                     
                     if len(face_encoding) > 0 and save_flag == True:
                         face_distances = face_recognition.face_distance(known_face_encodings, face_encoding[0])
-                        if face_distances[0] < 0.6:
+                        if face_distances[0] < 0.5:
                             print("cnt: {}".format(cnt))
                             cv2.imwrite("dataset/data" + str(cnt) + ".png", frame[bottom:top, left:right])
                             cnt += 1
