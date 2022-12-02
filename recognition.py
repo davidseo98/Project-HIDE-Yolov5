@@ -3,9 +3,10 @@ import detect_simple
 from datetime import datetime
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read('trainer.yml')
+
 
 def reco(video_path):
+    recognizer.read('trainer.yml')
     video = cv2.VideoCapture(video_path)
     fps = video.get(cv2.CAP_PROP_FPS)
     day = datetime.today().strftime("%Y%m%d")

@@ -1,11 +1,14 @@
 import makedata
 import train
-import recognition
+import recognition_tracker
 
 
-video_path = "얼굴 각도 다양.mp4"
-img_path = "김인호.png"
+video_path = "test.mp4"
+img_path = "test_img.png"
 
+print("making data...")
 cnt = makedata.make_data(video_path, img_path)
+print("training recognizer...")
 train.training(cnt)
-recognition.reco(video_path)
+print("converting video...")
+recognition_tracker.reco(video_path)
