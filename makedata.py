@@ -27,8 +27,7 @@ def make_data(video_path, img_path):
     while True:
         ret, frame = video.read()
         frame_number += 1
-        if frame_number % 100 == 1:
-            save_flag = True
+
         if ret:
             rgb_small_frame = frame[:, :, ::-1]
             
@@ -46,16 +45,15 @@ def make_data(video_path, img_path):
                     
                     if len(face_encoding) > 0 and save_flag == True:
                         face_distances = face_recognition.face_distance(known_face_encodings, face_encoding[0])
-                        if cnt < 30 and face_distances[0] < 0.4:
+                        if face_distances[0] < 0.4:
                             print("cnt: {}".format(cnt))
                             cv2.imwrite("dataset/data" + str(cnt) + ".png", frame[bottom:top, left:right])
-                            save_flag = False
                             cnt += 1
                         
     
                         
         else: break
 
-        if cnt == 30: break
+        if cnt == 500: break
 
     return cnt
